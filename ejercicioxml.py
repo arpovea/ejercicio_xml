@@ -11,3 +11,14 @@ Elige una opcion:
 5-Pide por teclado una localidad, cuenta las Bibliotecas que tiene, muestra su nombre y año de fundación.
 ''')
 opcion=int(input("Opcion:"))
+
+if opcion==1:
+	print ("Las Bibliotecas de las que tenemos información son: ")
+elif opcion==2:
+	print ("La cantidad de Bibliotecas en nuesta base de datos es: ")
+elif opcion==3:
+	localidad=str(input("Dime la localidad, te mostraré las bibliotecas y sus horarios: "))
+elif opcion==4:
+	acceso=str(input("Dime un tipo de acceso y te mostraré las Bibliotecas que lo cumplen: "))
+elif opcion==5:
+	localidad=str(input("Dime una localidad, te mostrare el numero de bibliotecas totales, su nombre y año de fundación")) 
