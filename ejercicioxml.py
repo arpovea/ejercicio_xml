@@ -2,6 +2,8 @@ from funciones import nombresbibliotecas
 from funciones import numerobibliotecas
 from funciones import bibliolocalidad
 from funciones import tipodeacceso
+from funciones import nombreañofundacion
+
 from lxml import etree
 doc= etree.parse('bibliotecas.xml')
 
@@ -32,7 +34,10 @@ while True:
 		for biblioteca in tipodeacceso(acceso,doc):
 			print (biblioteca)
 	elif opcion==5:
-		localidad=str(input("Dime una localidad, te mostrare el numero de bibliotecas totales, su nombre y año de fundación")) 
+		localidad=str(input("Dime una localidad, te mostrare el numero de bibliotecas totales, su nombre y año de fundación respectivamente: ")) 
+		for biblioteca in nombreañofundacion(localidad,doc):
+			for elem in biblioteca:
+				print (elem)
 	elif opcion==0:
 		print("Hasta la proxima.")
 		break;

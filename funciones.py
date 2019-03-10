@@ -15,3 +15,9 @@ def bibliolocalidad(localidad,doc):
 def tipodeacceso(acceso,doc):
 	nombrebiblioteca=doc.xpath('/list/item[TIPO_ACCESO="%s"]/NOMBRE/text()'%acceso)
 	return nombrebiblioteca
+
+def nombreañofundacion(localidad,doc):
+	numero = str(doc.xpath('count(/list/item/LOCALIZACION[LOCALIDAD="%s"])'%localidad))[0]
+	nombrebiblioteca = doc.xpath('/list/item/LOCALIZACION[LOCALIDAD="%s"]/../NOMBRE/text()'%localidad)
+	añofundacion = doc.xpath('/list//item/LOCALIZACION[LOCALIDAD="%s"]/../AÑO_FUNDACION/text()'%localidad)
+	return (numero,nombrebiblioteca,añofundacion)
