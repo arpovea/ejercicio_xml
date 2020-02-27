@@ -36,6 +36,7 @@ while True:
 	elif opcion==5:
 		localidad=str(input("Dime una localidad, te mostrare el numero de bibliotecas totales, su nombre y año de fundación respectivamente: ")) 
 		for biblioteca in nombreañofundacion(localidad,doc):
+			print (biblioteca)
 			for elem in biblioteca:
 				print (elem)
 	elif opcion==0:
