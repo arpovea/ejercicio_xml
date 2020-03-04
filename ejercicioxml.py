@@ -28,16 +28,17 @@ while True:
 	elif opcion==3:
 		localidad=str(input("Dime la localidad, te mostraré las bibliotecas y sus horarios: "))
 		for biblioteca in bibliolocalidad(localidad,doc):
-			print (biblioteca)
+			print ("Nombre:",biblioteca[0],"----> Horario:",biblioteca[1])
 	elif opcion==4:
 		acceso=str(input("Dime un tipo de acceso y te mostraré las Bibliotecas que lo cumplen: "))
 		for biblioteca in tipodeacceso(acceso,doc):
 			print (biblioteca)
 	elif opcion==5:
-		localidad=str(input("Dime una localidad, te mostrare el numero de bibliotecas totales, su nombre y año de fundación respectivamente: ")) 
-		for biblioteca in nombreañofundacion(localidad,doc):
-			#for elem in biblioteca:
-			#	print (elem)
+		localidad=str(input("Dime una Localidad: "))
+		numero = int((doc.xpath('count(/list/item/LOCALIZACION[LOCALIDAD="%s"])'%localidad)))
+		print("El numero de Bibliotecas en %s son: %i"%(localidad,int(numero)))
+		for elem in nombreañofundacion(localidad,doc):
+			print("Nombre:",elem["nombre"],"----> Año Fundacion:",elem["añofundacion"][0])
 	elif opcion==0:
-		print("Hasta la proxima.")
-		break;
+		print("¡Hasta la proxima!")
+		break

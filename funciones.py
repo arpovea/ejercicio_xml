@@ -17,9 +17,12 @@ def tipodeacceso(acceso,doc):
 	return nombrebiblioteca
 
 def nombreañofundacion(localidad,doc):
-	numero = (doc.xpath('/list/item/LOCALIZACION[LOCALIDAD="%s"])'%localidad)
+	nombrebiblioteca= doc.xpath('/list/item/LOCALIZACION[LOCALIDAD="%s"]/../NOMBRE/text()'%localidad)
+	añofundacion=doc.xpath('/list/item/LOCALIZACION[LOCALIDAD="%s"]/../AÑO_FUNDACION/text()'%localidad)
 	listabibliotecas=[]
-	for elem in localidad:
-		nombrebiblioteca = doc.xpath('/list/item/LOCALIZACION[LOCALIDAD="%s"]/../NOMBRE/text()'%localidad)
-		añofundacion = doc.xpath('/list//item/LOCALIZACION[LOCALIDAD="%s"]/../AÑO_FUNDACION/text()'%localidad)
-	return (numero,nombrebiblioteca,añofundacion)
+	for elem in nombrebiblioteca:
+		dicbiblioteca={}
+		dicbiblioteca["nombre"]=elem
+		dicbiblioteca["añofundacion"]=doc.xpath('/list/item[NOMBRE="%s"]/AÑO_FUNDACION/text()'%elem)
+		listabibliotecas.append(dicbiblioteca)
+	return listabibliotecas
